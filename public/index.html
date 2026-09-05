@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AADS V25.6 animation prompt creator powered by Google Gemini" />
+    <title>AnimPrompt — AADS V25.6 Google Gemini Demo</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="brand"><span class="mark">▦</span> AnimPrompt</div>
+      <div class="badges"><span>AADS V25.6</span><span>Google Gemini</span><span>DevPost Build</span></div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">ANIMATION DIRECTION INTELLIGENCE</p>
+        <h1>Turn a scene idea into a renderer-ready performance prompt.</h1>
+        <p class="lede">A clean contest build using Google Gemini for semantic direction and deterministic AADS assembly for dialogue and continuity.</p>
+      </section>
+
+      <section class="workspace">
+        <form id="generator-form" class="panel controls">
+          <div class="panel-title"><span>01</span> Configure the shot</div>
+
+          <label for="input">Creative brief</label>
+          <textarea id="input" required minlength="20" maxlength="6000" rows="9">Create a vertical single continuous feature-animation 3D shot. Digi stands inside a digital laboratory beside one waist-high control console. His complete left shoulder-to-fingers chain is committed toward one glowing switch. The interface wristband stays attached to his left wrist. He presses the switch with his left index finger, reacts through his full body, then settles into a strong asymmetric living hold. The right arm remains relaxed and separate. Locked camera and locked framing. No stool, chair, seated pose, extra limb, transferred wristband, prop substitution, cut, pan, tilt, zoom, camera shake, or on-screen text.</textarea>
+
+          <label for="dialogue">Exact dialogue — optional</label>
+          <textarea id="dialogue" maxlength="800" rows="3">One signal. One choice. Now watch the whole chain react.</textarea>
+          <p class="hint">Application code inserts this exactly once after Gemini finishes.</p>
+
+          <div class="grid two">
+            <div><label for="visualStyle">Visual style</label><select id="visualStyle"><option>Realism</option><option selected>Semi-Stylized</option><option>Cartoon</option></select><p class="control-note">Appearance, materials, character rendering, and environment.</p></div>
+            <div><label for="directingStyle">Directing style</label><select id="directingStyle"><option>Documentary</option><option selected>Naturalistic</option><option>Feature Animation</option><option>Theatrical</option><option>Operatic</option></select><p class="control-note">Staging, presentation, dramatic emphasis, and shot interpretation.</p></div>
+            <div><label for="performanceStyle">Performance style</label><select id="performanceStyle"><option>Restrained</option><option selected>Natural</option><option>Feature Animation</option><option>Theatrical</option></select><p class="control-note">How the performer acts, independent of action amplitude.</p></div>
+            <div><label for="actionScale">Action scale</label><select id="actionScale"><option>Low</option><option selected>Moderate</option><option>High</option><option>Extreme</option></select><p class="control-note">Physical amplitude, weight transfer, follow-through, and recovery.</p></div>
+            <div><label for="emotionalScale">Emotional scale</label><select id="emotionalScale"><option>Low</option><option>Moderate</option><option selected>High</option><option>Extreme</option></select><p class="control-note">Eyes, breath, facial response, and internal reaction.</p></div>
+            <div><label for="performanceScale">Performance scale</label><select id="performanceScale"><option>Low</option><option>Moderate</option><option selected>High</option><option>Extreme</option></select></div>
+            <div><label for="engine">Target engine</label><select id="engine"><option>Seedance</option><option>Runway Gen-3</option><option>Pika Labs</option><option>Sora</option><option>Kling</option><option>Luma Dream Machine</option><option>Google Gemini Video</option><option>General</option></select></div>
+            <div><label for="duration">Duration</label><select id="duration"><option value="3">3 seconds</option><option value="5">5 seconds</option><option value="8">8 seconds</option><option value="10" selected>10 seconds</option><option value="15">15 seconds</option><option value="30">30 seconds</option></select></div>
+            <div><label for="aspectRatio">Aspect ratio</label><select id="aspectRatio"><option selected>9:16</option><option>16:9</option><option>1:1</option></select></div>
+            <div><label for="mood">Mood</label><input id="mood" value="energetic cinematic wonder" maxlength="80" /></div>
+          </div>
+
+          <details>
+            <summary>Advanced / Owner · AADS modules</summary>
+            <div id="modules" class="module-list"></div>
+          </details>
+
+          <button id="generate" type="submit"><span>▶</span> Initialize sequence</button>
+          <div id="status" class="status" role="status" aria-live="polite"></div>
+        </form>
+
+        <section class="panel output">
+          <div class="output-head"><div class="panel-title"><span>02</span> Production prompt</div><div class="actions"><button id="copy" class="secondary" disabled>Copy</button><button id="download" class="secondary" disabled>Download</button></div></div>
+          <div id="empty" class="empty"><div class="orb">A</div><h2>Ready for direction</h2><p>Your renderer-ready prompt will appear here.</p></div>
+          <pre id="result" hidden></pre>
+          <div id="meta" class="meta"></div>
+        </section>
+      </section>
+
+      <section class="laws">
+        <article><b>Subject-aware holds</b><span>Character, camera, object, environment, and editorial holds retain distinct meanings.</span></article>
+        <article><b>Exact-once dialogue</b><span>Protected dialogue is assembled by deterministic code, never duplicated by the model.</span></article>
+        <article><b>No false 422 gate</b><span>The app validates request structure—not creative vocabulary or legitimate stillness.</span></article>
+      </section>
+    </main>
+
+    <footer>AADS™ V25.6 Contest Kernel · Built by Ross Marshall · Powered by Google Gemini</footer>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

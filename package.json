@@ -1,0 +1,16 @@
+{
+  "name": "aads-v25-6-devpost-rescue",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Clean Google Gemini-powered AADS V25.6 animation prompt demo for DevPost",
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs",
+    "test": "node --test",
+    "check": "node --check server.mjs && node --check src/aads-kernel.mjs && node --check public/app.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

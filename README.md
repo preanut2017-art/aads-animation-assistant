@@ -1,54 +1,51 @@
-# AnimPrompt — AADS V25.6 DevPost Build
+# AnimPrompt — AADS V25.6 DevPost Rescue Build
 
-AnimPrompt converts an animation scene idea into a structured, renderer-ready production prompt using Google Gemini and the AADS animation-direction framework.
+This is a clean, independent contest build of the AnimPrompt generator. Google Gemini performs semantic scene direction; deterministic application code assembles protected dialogue and renderer-facing sections.
 
-## Live Demo
+## Why this build exists
 
-https://anim-prompt-dev-post-rescue.replit.app
+The previous production application used an expanding chain of custom output classifiers. Legitimate animation language such as negative stillness constraints, locked cameras, object holds, and living end poses could be misclassified and rejected with an internal 422. This build removes that failure path.
 
-## Features
+It does **not** weaken Google safety controls. Google Gemini remains responsible for provider-level safety. The application validates request shape and Gemini's JSON structure but does not police ordinary creative vocabulary.
 
-- Google Gemini-powered prompt generation
-- Multiple animation-engine targets
-- Visual, directing, performance, emotional, and action controls
-- Exact-once dialogue handling
-- Character, camera, object, and environmental continuity
-- Subject-aware living holds
-- Configurable AADS modules
-- Vertical and horizontal aspect ratios
+## Run locally
 
-## Technology
+1. Install Node.js 20 or newer.
+2. Add a Google AI Studio key to the environment as `GEMINI_API_KEY`.
+3. Optionally set `GEMINI_MODEL` (default: `gemini-3.6-flash`).
+4. Run `npm start`.
+5. Open `http://localhost:3000`.
 
-- Node.js
-- JavaScript
-- HTML and CSS
-- Replit
-- Google Gemini API
+No package installation is required.
 
-## Open-Source Submission
+## Import into Replit
 
-This repository contains the complete runnable source code for the DevPost demonstration, including its web interface, Gemini integration, prompt-assembly logic, and focused AADS V25.6 contest kernel.
+1. Create a **new** Replit project; do not overwrite the existing production project.
+2. Import this repository or ZIP.
+3. In Secrets, add `GEMINI_API_KEY` with the Google AI Studio key.
+4. Press Run.
+5. Confirm `/api/health` reports `ok: true` and `apiKeyConfigured: true`.
+6. Generate the supplied Digi test shot before publishing.
 
-Separate commercial versions of AADS may contain additional proprietary modules, but they are not required to install or run this submission.
+The server also recognizes `GOOGLE_API_KEY` and Replit's `AI_INTEGRATIONS_GEMINI_API_KEY` environment names.
 
-## Local Setup
+## Design boundaries
 
-1. Install dependencies:
+- Google Gemini only; no OpenAI client or route.
+- No Clerk, Stripe, database, credits, subscriptions, or webhooks.
+- Exact dialogue is omitted from the model response and inserted once by code.
+- Holds are qualified by subject and function.
+- Negative constraints retain negative scope.
+- High and Extreme settings are legitimate performance choices.
+- Provider errors are reported as provider errors, not as internal “final safety validation” failures.
 
-   npm install
+## Verify
 
-2. Configure environment variables:
+```bash
+npm test
+npm run check
+```
 
-   GEMINI_API_KEY=your_key
-   GEMINI_MODEL=gemini-3.6-flash
-   SESSION_SECRET=your_session_secret
+## Proprietary source boundary
 
-3. Start the application:
-
-   npm start
-
-Never commit API keys or other secret values to this repository.
-
-## License
-
-Released under the MIT License. See `LICENSE`.
+The public contest repository contains executable source code and the compact AADS V25.6 Contest Kernel. The complete proprietary AADS master document is intentionally not included.
